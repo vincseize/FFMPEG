@@ -29,3 +29,17 @@ if not exist "comp" mkdir comp
 for /f "tokens=1 delims=." %a in ('dir /B *.mp4') do ffmpeg -i "%a.mp4" "%a_comp.mp4"
 ```
 
+
+```
+@echo ON
+rd /s /q "comp"
+mkdir comp
+for f in *.mp4; do ffmpeg -i "$f" -preset fast "comp/$f.mp4";
+done
+for f in comp/*.mp4.mp4; do mv "$f" "${f%.mp4.mp4}.mp4";
+done
+for f in *.MP4; do ffmpeg -i "$f" -preset fast "comp/$f.mp4";
+done
+for f in comp/*.MP4.mp4; do mv "$f" "${f%.MP4.mp4}.mp4";
+done
+```
