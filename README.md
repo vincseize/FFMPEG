@@ -7,6 +7,8 @@
 - ffmpeg -i GOPR0327.MP4 -strict -2 -vcodec libx265 -crf 28  GOPR0327_comp.mp4 (avec comp)
 - ffmpeg -i GOPR0327.MP4 -strict -2 -vcodec libx265 -crf 28 -preset [fast/slow] GOPR0327_comp.mp4 (avec comp)
 
+bash convFile.bat :
+
 ```
 @echo ON
 rd /s /q "comp"
