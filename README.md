@@ -9,6 +9,20 @@
 
 bash convFile.bat :
 
+````
+@echo ON
+rd /s /q "comp"
+mkdir comp
+for f in *.mp4; do ffmpeg -i "$f" -y -f mp4 -b:a 192k -c:v libx264 -crf 23 -preset fast "comp/$f.mp4";
+done
+for f in comp/*.mp4.mp4; do mv "$f" "${f%.mp4.mp4}.mp4";
+done
+for f in *.MP4; do ffmpeg -i "$f" -y -f mp4 -b:a 192k -c:v libx264 -crf 23 -preset fast "comp/$f.mp4";
+done 
+for f in comp/*.MP4.mp4; do mv "$f" "${f%.MP4.mp4}.mp4";
+done
+````
+
 ```
 @echo ON
 rd /s /q "comp"
