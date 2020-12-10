@@ -57,3 +57,11 @@ done
 for f in comp/*.MP4.mp4; do mv "$f" "${f%.MP4.mp4}.mp4";
 done
 ```
+
+bash rotate90
+
+```
+@echo ON
+ffmpeg -hide_banner -noautorotate -i "input.mp4" -vf "transpose=cclock" -metadata:s:v:0 rotate=0 -c:v libx264 -preset veryfast -crf 22 -c:a copy "input90.mp4";
+
+```
