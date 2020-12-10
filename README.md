@@ -58,7 +58,7 @@ for f in comp/*.MP4.mp4; do mv "$f" "${f%.MP4.mp4}.mp4";
 done
 ```
 
-bash rotate90
+bash rotate90.bat :
 
 ```
 @echo ON
