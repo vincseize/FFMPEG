@@ -65,3 +65,14 @@ bash rotate90.bat :
 ffmpeg -hide_banner -noautorotate -i "input.mp4" -vf "transpose=cclock" -metadata:s:v:0 rotate=0 -c:v libx264 -preset veryfast -crf 22 -c:a copy "input90.mp4";
 
 ```
+
+bash convWAWtoMP3.bat :
+```
+@echo ON
+rd /s /q "compMP3"
+mkdir compMP3
+for f in *.wav; do ffmpeg -i "$f" -ab 320k -f mp3 "compMP3/$f.mp3";
+done
+for f in compMP3/*.wav.mp3; do mv "$f" "${f%.wav.mp3}.mp3";
+done
+```
