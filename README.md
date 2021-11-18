@@ -78,6 +78,7 @@ done
 ```
 
 bash resize1k2k4k.bat
+windows mode
 ```
 @echo ON
 rd /s /q "comp1024"
