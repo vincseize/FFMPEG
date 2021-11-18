@@ -76,3 +76,27 @@ done
 for f in compMP3/*.wav.mp3; do mv "$f" "${f%.wav.mp3}.mp3";
 done
 ```
+
+bash resize1k2k4k.bat
+```
+@echo ON
+rd /s /q "comp1024"
+rd /s /q "comp2048"
+rd /s /q "comp4096"
+mkdir comp1024
+mkdir comp2048
+mkdir comp4096
+for %%j in (*.jpg) DO ffmpeg -i "%%j" -vf scale=1024:-1 "comp1024\%%~nj.jpg"
+done
+for %%j in (*.jpeg) DO ffmpeg -i "%%j" -vf scale=1024:-1 "comp1024\%%~nj.jpeg"
+done
+for %%j in (*.jpg) DO ffmpeg -i "%%j" -vf scale=2048:-1 "comp2048\%%~nj.jpg"
+done
+for %%j in (*.jpeg) DO ffmpeg -i "%%j" -vf scale=2048:-1 "comp2048\%%~nj.jpeg"
+done
+for %%j in (*.jpg) DO ffmpeg -i "%%j" -vf scale=4096:-1 "comp4096\%%~nj.jpg"
+done
+for %%j in (*.jpeg) DO ffmpeg -i "%%j" -vf scale=4096:-1 "comp4096\%%~nj.jpeg"
+done
+```
+
