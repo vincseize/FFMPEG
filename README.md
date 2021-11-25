@@ -5,12 +5,12 @@
 - ffmpeg -i GOPR0327_comp2.avi -strict -2 GOPR0327_comp2.mp4 (GOPRO)
 - ffmpeg -i GOPR0327.MP4 -strict -2 GOPR0327_comp.mp4 (GOPRO)
 - ffmpeg -i GOPR0327.MP4 -strict -2 -vcodec libx265 -crf 28  GOPR0327_comp.mp4 (avec comp)
-- ffmpeg -i GOPR0327.MP4 -strict -2 -vcodec libx265 -crf 28 -preset [fast/slow] GOPR0327_comp.mp4 (avec comp)
+- ffmpeg -i GOPR0327.MP4 -strict -2 -vcodec libx265 -crf 28 -preset [fast/slow] GOPR0327_comp.mp4 (avec comp, assez bonne)
 
 bash convFile.bat :
 
 
-````
+```
 @echo ON
 rd /s /q "comp"
 mkdir comp
@@ -21,6 +21,14 @@ done
 for f in *.MP4; do ffmpeg -i "$f" -y -f mp4 -b:a 192k -c:v libx264 -crf 23 -preset fast "comp/$f.mp4";
 done 
 for f in comp/*.MP4.mp4; do mv "$f" "${f%.MP4.mp4}.mp4";
+done
+```
+
+````
+@ECHO ON
+rd /s /q "comp"
+if not exist "comp" mkdir comp
+for %%j in (*.mp4) DO ffmpeg -i "%%j" -y -f mp4 -b:a 192k -c:v libx265 -crf 23 -preset fast "comp\%%~nj.mp4"
 done
 ````
 
