@@ -9,6 +9,7 @@
 
 bash convFile.bat :
 
+
 ````
 @echo ON
 rd /s /q "comp"
@@ -22,6 +23,7 @@ done
 for f in comp/*.MP4.mp4; do mv "$f" "${f%.MP4.mp4}.mp4";
 done
 ````
+
 
 ```
 @echo ON
@@ -37,8 +39,10 @@ for f in comp/*.MP4.avi; do mv "$f" "${f%.MP4.avi}.avi";
 done
 ```
 
+
 ```
 @ECHO ON
+rd /s /q "comp"
 if not exist "comp" mkdir comp
 for /f "tokens=1 delims=." %a in ('dir /B *.mp4') do ffmpeg -i "%a.mp4" "%a_comp.mp4"
 ```
